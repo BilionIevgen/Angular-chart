@@ -1,0 +1,32 @@
+<button [routerLink]="'new'" mat-raised-button color="primary">Add New Price</button>
+
+<table [ngStyle]="{'margin-top': '15px'}" mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+  <!--- Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row definition" -->
+
+  <!-- Position Column -->
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef> Price Name </th>
+    <td  class='element-row' [routerLink]="element.name" mat-cell *matCellDef="let element">{{element.name}}</td>
+  </ng-container>
+  <!-- PriceIn -->
+  <ng-container matColumnDef="pricein">
+    <th mat-header-cell *matHeaderCellDef> Price In </th>
+    <td  class='element-row' [routerLink]="element.name" mat-cell *matCellDef="let element">{{generetePriceIn(element)}}</td>
+  </ng-container>
+  <!-- PriceOut -->
+  <ng-container matColumnDef="priceout">
+    <th mat-header-cell *matHeaderCellDef> Price Out </th>
+    <td  class='element-row' [routerLink]="element.name" mat-cell *matCellDef="let element">{{generetePriceOut(element)}}</td>
+  </ng-container>
+    <!-- Profit Column -->
+    <ng-container matColumnDef="profit">
+      <th mat-header-cell *matHeaderCellDef> Profit </th>
+      <td  class='element-row' [routerLink]="element.name" mat-cell *matCellDef="let element">{{genereteProfit(element)}}</td>
+    </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+

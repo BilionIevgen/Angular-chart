@@ -1,0 +1,53 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit($event)">
+  <h1>{{label}}</h1>
+  <!-- PRICE Name  -->
+  <p>
+    <mat-form-field>
+      <mat-label>Price Name</mat-label>
+      <input matInput [formControl]="priceNameField">
+      <mat-error *ngIf="priceNameField.invalid">{{getErrorMessage(priceNameField)}}</mat-error>
+    </mat-form-field>
+  </p>
+  <!-- PRICE IN  -->
+  <p>
+    <mat-form-field>
+      <mat-label>Price In</mat-label>
+      <input matInput [formControl]="priceinField">
+      <mat-error *ngIf="priceinField.invalid">{{getErrorMessage(priceinField)}}</mat-error>
+    </mat-form-field>
+  </p>
+  <!-- PRICE OUT -->
+  <p>
+    <mat-form-field>
+      <mat-label>Price Out</mat-label>
+      <input matInput [formControl]="priceoutField">
+      <mat-error *ngIf="priceoutField.invalid">{{getErrorMessage(priceoutField)}}</mat-error>
+    </mat-form-field>
+  </p>
+  <!-- DATE IN -->
+  <p>
+    <mat-form-field appearance="fill">
+      <mat-label>Choose month in</mat-label>
+      <select [formControl]="dateInField" matNativeControl>
+        <option value="" selected></option>
+        <option value="0">January</option>
+        <option value="1">February</option>
+        <option value="2">March</option>
+        <option value="3">April</option>
+        <option value="4">May</option>
+        <option value="5">June</option>
+        <option value="6">July</option>
+        <option value="7">August</option>
+        <option value="8">September</option>
+        <option value="9">October</option>
+        <option value="10">November</option>
+      </select>
+      <mat-error *ngIf="dateInField.invalid">{{getErrorMessage(dateInField)}}</mat-error>
+    </mat-form-field>
+  </p>
+
+
+  <button type="submit" mat-raised-button color="primary">{{buttonTitle}}</button>
+  <button (click)="onDeleteBtnClick()" [ngStyle]="{'margin-left': '15px'}" *ngIf="!isCreating
+  " type="submit" mat-raised-button color="accent">Delete</button>
+</form>
